@@ -9,3 +9,6 @@ build/
 **/*.iml
 
 */pom.xml
+
+# Sources for test classes
+target/**/*.pbf
