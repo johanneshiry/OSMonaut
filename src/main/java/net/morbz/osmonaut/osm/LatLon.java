@@ -84,10 +84,7 @@ public class LatLon implements Externalizable {
         if(latlon.getLat() != lat) {
             return false;
         }
-        if(latlon.getLon() != lon) {
-            return false;
-        }
-        return true;
+        return latlon.getLon() == lon;
     }
 
     /**

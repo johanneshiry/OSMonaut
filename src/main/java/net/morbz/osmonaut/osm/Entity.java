@@ -30,6 +30,7 @@ import java.io.ObjectInput;
 import java.io.ObjectOutput;
 
 import net.morbz.osmonaut.geometry.Bounds;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * The base class for all OSM entities.
@@ -90,10 +91,7 @@ public abstract class Entity implements Externalizable {
 		if (entity.getEntityType() != getEntityType()) {
 			return false;
 		}
-		if (entity.getId() != id) {
-			return false;
-		}
-		return true;
+		return entity.getId() == id;
 	}
 
 	/**
@@ -134,5 +132,10 @@ public abstract class Entity implements Externalizable {
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		id = in.readLong();
 		tags = (Tags)in.readObject();
+	}
+
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(7, 31).append(id).toHashCode();
 	}
 }
