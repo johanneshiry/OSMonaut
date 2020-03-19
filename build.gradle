@@ -32,5 +32,4 @@ dependencies {
     testCompile group: 'org.assertj', name: 'assertj-core', version: '3.5.2'
     compile group: 'com.google.protobuf', name: 'protobuf-java', version: '3.0.0'
     compile group: 'org.mapdb', name: 'mapdb', version: '3.0.1'
-    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.9'
 }
