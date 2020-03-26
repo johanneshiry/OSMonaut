@@ -28,7 +28,7 @@ import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
-
+import java.util.Objects;
 import net.morbz.osmonaut.geometry.Bounds;
 
 /**
@@ -90,10 +90,7 @@ public abstract class Entity implements Externalizable {
 		if (entity.getEntityType() != getEntityType()) {
 			return false;
 		}
-		if (entity.getId() != id) {
-			return false;
-		}
-		return true;
+		return entity.getId() == id;
 	}
 
 	/**
@@ -134,5 +131,10 @@ public abstract class Entity implements Externalizable {
 	public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
 		id = in.readLong();
 		tags = (Tags)in.readObject();
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
 	}
 }

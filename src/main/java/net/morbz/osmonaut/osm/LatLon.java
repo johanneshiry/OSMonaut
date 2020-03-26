@@ -24,13 +24,12 @@ package net.morbz.osmonaut.osm;
  * SOFTWARE.
  */
 
-import net.morbz.osmonaut.util.StringUtil;
-import org.apache.commons.lang3.builder.HashCodeBuilder;
-
 import java.io.Externalizable;
 import java.io.IOException;
 import java.io.ObjectInput;
 import java.io.ObjectOutput;
+import java.util.Objects;
+import net.morbz.osmonaut.util.StringUtil;
 
 
 /**
@@ -84,10 +83,7 @@ public class LatLon implements Externalizable {
         if(latlon.getLat() != lat) {
             return false;
         }
-        if(latlon.getLon() != lon) {
-            return false;
-        }
-        return true;
+        return latlon.getLon() == lon;
     }
 
     /**
@@ -118,6 +114,6 @@ public class LatLon implements Externalizable {
 
     @Override
     public int hashCode() {
-        return new HashCodeBuilder(7, 31).append(lat).append(lon).toHashCode();
+        return Objects.hash(lat, lon);
     }
 }
